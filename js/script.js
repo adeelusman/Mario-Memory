@@ -1,4 +1,3 @@
-// Card data
 const cardsArray = [{
     'name': 'shell',
     'img': 'img/blueshell.png',
@@ -49,6 +48,9 @@ const cardsArray = [{
   },
 ];
 
+// Duplicates the cardsArray array and renames array to gameGrid
+let gameGrid = cardsArray.concat(cardsArray);
+
 // Grab the div with an id of root
 const game = document.getElementById('game');
 
@@ -59,22 +61,16 @@ grid.setAttribute('class', 'grid');
 // Append the grid section to the game div
 game.appendChild(grid);
 
-// For each item in the cardsArray array...
-cardsArray.forEach(item => {
-	
-	//Create a div
-	const card = document.createElement('div');
-	
-	// Apply a card class to that div
-	card.ClassList.add('card');
-	
-	// Set the data-name attribute of the div to the cardsArray name
-	card.dataset.name = item.name;
-	
-	// Apply the background image of the div to the cardsArray image
-	card.style.backgroundImage = 'url(${item.img})';
-	
-	// Append the div to the grid section
-	grid.appendChild(card);
-	
-	});
+
+gameGrid.forEach(item => {
+  // Create a div and apply a card class
+  const card = document.createElement('div');
+  card.classList.add('card');
+
+  // Set the name and image attribute of the div to the cardsArray name and img
+  card.dataset.name = item.name;
+  card.style.backgroundImage = `url(${item.img})`;
+
+  // Append the div to the grid section
+  grid.appendChild(card);
+});
