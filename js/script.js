@@ -50,6 +50,8 @@ const cardsArray = [{
 
 // Duplicates the cardsArray array and renames array to gameGrid
 let gameGrid = cardsArray.concat(cardsArray);
+// Randomize game grid on each load
+gameGrid.sort(() => 0.5 - Math.random());
 
 // Grab the div with an id of root
 const game = document.getElementById('game');
